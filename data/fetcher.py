@@ -19,8 +19,14 @@ from datetime import datetime, timedelta
 
 from utils.finance import D, d_round, calc_pe, calc_pb, calc_roe, calc_fcf_yield
 
-CACHE_DIR = "/workspace/ai-berkshire/data/cache"
-os.makedirs(CACHE_DIR, exist_ok=True)
+# 缓存目录：优先用 /tmp（Streamlit Cloud 有写权限），本地开发回退到项目目录
+CACHE_DIR = os.environ.get("STREAMLIT_CACHE_DIR", "/tmp/ai_berkshire_cache")
+try:
+    os.makedirs(CACHE_DIR, exist_ok=True)
+except PermissionError:
+    # Streamlit Cloud 只读文件系统，回退到 /tmp
+    CACHE_DIR = "/tmp/ai_berkshire_cache"
+    os.makedirs(CACHE_DIR, exist_ok=True)
 
 # ═══════════════════════════════════════════════════
 # 预置热门标的静态数据（网络完全不可用时兜底）
