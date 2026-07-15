@@ -1,0 +1,17 @@
+name: Deploy to Streamlit Cloud
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trigger Streamlit Cloud deploy
+        run: |
+          echo "Streamlit Cloud automatically deploys on push to the connected repo."
+          echo "If not auto-deploying, visit: https://share.streamlit.io"
+          echo "App URL: https://ai-berkshire.streamlit.app"
