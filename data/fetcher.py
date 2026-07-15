@@ -468,6 +468,16 @@ FALLBACK_FUNDAMENTALS = {
         "revenue_growth_3y": "0.10", "earnings_growth_3y": "0.12", "dividend_yield": "0.028",
         "info": {"grossMargins": "0.78", "sector": "Consumer Defensive", "industry": "Beverages", "country": "China"},
     },
+    "601127.SS": {
+        "price": "55.89", "market_cap": "96000000000",
+        "name": "赛力斯", "currency": "CNY", "shares_outstanding": "1718000000",
+        "pe_ttm": "16.33", "pb": "2.36", "roe": "0.2353", "roic": "0.12",
+        "revenue": "165100000000", "net_income": "59570000000", "fcf": "16700000000",
+        "total_equity": "40700000000", "total_debt": "26800000000",
+        "current_assets": "43000000000", "current_liabilities": "40200000000",
+        "revenue_growth_3y": "0.1369", "earnings_growth_3y": "0.0018", "dividend_yield": "0",
+        "info": {"grossMargins": "0.2914", "sector": "Consumer Cyclical", "industry": "Auto Manufacturers", "country": "China"},
+    },
     "0700.HK": {
         "price": "480", "market_cap": "4400000000000",
         "name": "腾讯控股", "currency": "HKD", "shares_outstanding": "9200000000",
