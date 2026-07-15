@@ -647,15 +647,17 @@ def main():
             
             # 数据来源提示
             ds = getattr(data, 'data_source', 'unknown')
-            ds_labels = {
-                "live": "🔴 实时数据 (yfinance)",
-                "cache_hot": "🟡 热缓存 (1h 内)",
-                "cache_warm": "🟠 温缓存 (24h 内，yfinance 限流降级)",
-                "fallback": "🟢 离线兜底数据（网络不可用，使用预置参考值）",
-            }
-            ds_msg = ds_labels.get(ds, f"📡 {ds}")
-            if ds != "live":
-                st.warning(f"⚠️ 数据来源: {ds_msg} — 分析结果仅供参考，建议网络恢复后刷新")
+            ps = getattr(data, 'price_source', 'unknown')
+            
+            # 价格来源
+            if "realtime" in ps:
+                st.success(f"📡 行情: 实时 (Yahoo Finance) — {data.fetch_time[:19]}")
+            elif ps == "fallback":
+                st.warning("⚠️ 行情: 离线参考价（非实时）")
+            
+            # 基本面来源
+            if "fallback" in ds and "live" not in ds:
+                st.info("📊 基本面: 预置参考数据（yfinance 不可用时的兜底值）")
             
             # Step 1: 四大师并行分析
             with st.spinner("🧠 四大师分析中..."):
